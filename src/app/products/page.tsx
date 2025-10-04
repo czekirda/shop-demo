@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabaseClient'
+import Link from 'next/link'
 
 export default async function ProductsPage() {
   const { data: products, error } = await supabase
@@ -14,7 +15,7 @@ export default async function ProductsPage() {
       <h1 className="text-3xl font-bold mb-8">All Products</h1>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
-          <a
+          <Link
             key={p.id}
             href={`/products/${p.id}`}
             className="bg-white border rounded-2xl overflow-hidden shadow hover:shadow-lg transition"
@@ -32,7 +33,7 @@ export default async function ProductsPage() {
                 €{(p.price / 100).toFixed(2)}
               </p>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </main>

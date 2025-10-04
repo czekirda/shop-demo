@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabaseClient'
+import Link from 'next/link'
 
 type Props = { params: { id: string } }
 
@@ -29,12 +30,12 @@ export default async function ProductDetail({ params }: Props) {
           <p className="mt-4 text-gray-700 whitespace-pre-line">
             {product.long_description ?? product.short_description}
           </p>
-          <a
+          <Link
             href="/products"
             className="inline-block mt-6 px-5 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition"
           >
             ← Back to Products
-          </a>
+          </Link>
         </div>
       </div>
     </main>
