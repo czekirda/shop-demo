@@ -2,9 +2,9 @@ import { supabase } from '@/lib/supabaseClient'
 import Link from 'next/link'
 
 export default async function ProductsPage() {
-  // 👇 Query the shop schema instead of public
   const { data: products, error } = await supabase
-    .from('shop.products')
+    .schema('shop')
+    .from('products')
     .select('id, name, price, image_url, short_description')
     .order('created_at', { ascending: false })
 

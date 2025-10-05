@@ -4,9 +4,9 @@ import Link from 'next/link'
 type Props = { params: { id: string } }
 
 export default async function ProductDetail({ params }: Props) {
-  // 👇 Query the shop schema instead of public
   const { data: product, error } = await supabase
-    .from('shop.products')
+    .schema('shop')
+    .from('products')
     .select('*')
     .eq('id', params.id)
     .single()
